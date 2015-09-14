@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>This is my Company</title>
+</head>
+<body>
+    <div id="headerContent" class="headerContentStyle">
+        <div id="menuBar">
+            <a href="index.html" class="headerMenuStyle">HOME</a>|
+            <a href="breakRoom.html" class="headerMenuStyle">Break Room</a>
+        </div>
+    </div>
+    <div id="mainContentCanvass" class="mainContentCanvass">
+        <input type="text" id="allCanvassToggle" value=">>>> Close BreakRoom <<<<" class="toggleClassExpanded">&nbsp;
+        <input type="text" id="helpTextToggle" value=">>>> Close HelpText <<<<" class="toggleClassExpanded">&nbsp;
+        <input type="text" id="vendingAreaToggle" value=">>>> Close Vending Area <<<<" class="toggleClassExpanded"><br />
+        <table id="breakRoomContent">
+            <tr id="helpContext">
+                <td colspan="5" >
+                    <section id="showingYouAround" class="documentAndOtherGeneralText">
+                        Welcome to my Company breakroom. We have coffee, tea and Espressso!!! Current prices are
+                        <ul>Coffee: 75 cents</ul>
+                        <ul>Tea: 1 Dollar</ul>
+                        <ul>Espresso: Dollar, 50 cents</ul>
+                        The button to buy shows the price. Click it to pop out your beverage. Click the beverage to take your cup; the cup disappears
+                        <p><b><i>You can also win a beverage!!!</i></b></p>
+                        <p>Play the slot machine (4th in the row of devices) and get the appropriate components' photos to match:<br />
+                        If you are a winner, the cup appears in the dispensing machine and you need to click it to take the cup (as above, the cup will disappear 
+                        after the click)
+                        </p>
+                    </section>
+                </td>
+            </tr>
+            <tr id="vendingArea">
+                <td class="dispenserFrame">
+                    <div>
+                        <img src="img/coffee_maker.png" />
+                        <img src="img/coffee_filters.png" />
+                        <img src="img//coffee_grounds.png" />
+                        <div id="buyCoffee" class="button button-default buyButton">$0.75</div>
+
+                        <div id="coffeeDispenseOuter" class="dispensedFrame">
+                            <div id="coffeeDispense" class="dispenseClass">
+                                <img src="img/coffee_dispensed.png" />
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td class="dispenserFrame">
+                    <img src="img/tea_pot.png" />
+                    <img src="img/tea_strainer.png" />
+                    <img src="img/tea_leaves.png" />
+                    <div id="buyTea" class="button button-default buyButton">$1.00</div>
+
+                    <div id="teaDispenseOuter" class="dispensedFrame">
+                        <div id="teaDispense" class="dispenseClass">
+                            <img src="img/tea_dispensed.png" />
+                        </div>
+                    </div>
+
+                </td>
+                <td class="dispenserFrame">
+                    <img src="img/espresso_machine.png" />
+                    <img src="img/espresso_tamper.png" />
+                    <img src="img/espresso_beans.png" />
+                    <div id="buyEspresso" class="button button-default buyButton">$1.50</div>
+
+                    <div id="espressoDispenseOuter" class="dispensedFrame">
+                        <div id="esspressoDispense" class="dispenseClass">
+                            <img src="img/espresso_dispense.png" />
+                        </div>
+                    </div>
+
+                </td>
+                <td class="slotFrame">
+                    <div id="slotHeader">
+                        <h1 id="slotStatus">Play for perks!!</h1>
+                        <h3>Play and Win</h3>
+                    </div>
+                    <div id="reels">
+                        <canvas id="canvas1" width="100" height="300"></canvas>
+                        <canvas id="canvas2" width="100" height="300"></canvas>
+                        <canvas id="canvas3" width="100" height="300"></canvas>
+                     </div>
+                    <div id="buttons">
+                        <div id="play" class="button button-default">Play</div>
+                    </div>
+                </td>
+                <td class="vendingFrame">
+                    <table style="margin-bottom:50px;">
+                        <tr>
+                            <td>Spicy Chips</td>
+                            <td>Cheese Puffs</td>
+                            <td>Wheat Thins</td>
+                        </tr>
+                        <tr>
+                            <td>Cola</td>
+                            <td>Orange Pop</td>
+                            <td>Lemon Pop</td>
+                        </tr>
+                        <tr>
+                            <td>White Chocolate Bar</td>
+                            <td>Nougat Bar</td>
+                            <td>Chocolate coins</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+    </table>
+    </div>
+    <link rel="stylesheet" href="styling/common.css" type="text/css" />
+    <link rel="stylesheet" href="styling/breakRoom.css" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="scripts/slot.js"></script>
+    <script type="text/javascript">$(function () { SlotGame(); });</script>
+
+    <script type="text/javascript" src="scripts/common.js"></script>
+    <script>
+        $('#allCanvassToggle').click(function () {
+             
+            var showHide = ($(this).val().indexOf('Open') >= 0).toString();
+            
+            var charReplaced = '', charToReplace = '';
+            if (showHide == 'true') {
+                var charReplaced = '>', charToReplace = '<';
+            }
+            else {
+                var charReplaced = '<', charToReplace = '>';
+            }
+            //  alert(showHide);
+            toggleVisibilityAllDOM('#mainContentCanvass', showHide, 'Open', 'Close', charReplaced, charToReplace);
+        });
+        $('#helpTextToggle').click(function () {
+            toggleVisibility($(this), $('#helpContext'), 'Open', 'Close');
+
+        });
+        $('#vendingAreaToggle').click(function () {
+            toggleVisibility($(this), $('#vendingArea'), 'Open', 'Close');
+        });
+        $('#buyCoffee').click(function () { // can use the class of the buy button here, then traverse the sibling to fadein the corresponding cup
+
+            blinker('#coffeeDispense', 0);
+        });
+        $('#buyTea').click(function () { // can use the class of the buy button here, then traverse the sibling to fadein the corresponding cup
+            blinker('#teaDispense', 0);
+        });
+        $('#buyEspresso').click(function () { // can use the class of the buy button here, then traverse the sibling to fadein the corresponding cup
+            blinker('#esspressoDispense', 0);
+        });
+
+        $('.dispenseClass').click(function () {
+            $('#slotStatus').text('Play for perks!!');
+            hideBeverageCup($(this));
+        });
+    </script>
+
+  
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+C:\Shantanu\Projects for Clients\HubTack\MyCompanyBreakRoom\MyCompanyBreakRoom\bin\MyCompanyBreakRoom.dll.config
+C:\Shantanu\Projects for Clients\HubTack\MyCompanyBreakRoom\MyCompanyBreakRoom\bin\MyCompanyBreakRoom.dll
+C:\Shantanu\Projects for Clients\HubTack\MyCompanyBreakRoom\MyCompanyBreakRoom\bin\MyCompanyBreakRoom.pdb
+C:\Shantanu\Projects for Clients\HubTack\MyCompanyBreakRoom\MyCompanyBreakRoom\obj\Debug\MyCompanyBreakRoom.dll
+C:\Shantanu\Projects for Clients\HubTack\MyCompanyBreakRoom\MyCompanyBreakRoom\obj\Debug\MyCompanyBreakRoom.pdb
+C:\Shantanu\Projects for Clients\HubTack\MyCompanyBreakRoom\MyCompanyBreakRoom\obj\Debug\MyCompanyBreakRoom.csprojResolveAssemblyReference.cache
